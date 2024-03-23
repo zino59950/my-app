@@ -1,6 +1,13 @@
 body {
     margin: 0%;
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+}
 
+.form-login {
+  min-height: 80vh;
+  padding-top: 50px;
 }
 .banner {
     /* max-width: 1440px; */
@@ -11,11 +18,10 @@ body {
     background-position: center; /* Centre l'image de fond */
 }
 .hero {
-    background-position: 0 -50px;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 400px;
-    position: relative;
+    position: absolute;
+    width: 100%;
   }
   
 
@@ -121,6 +127,14 @@ body {
     margin: 0 auto;
     left: 10rem;
 }
+
+@media (max-width: 700px) {
+    .hero-content {
+        width: 50%;
+        margin: auto;
+        left: 0;
+    }
+}
 /* LOGIN */
 .bg-dark {
     background-color: #12002b;
@@ -213,8 +227,14 @@ body {
     width: 200px;
   }
   
-  section.account {
-    width: 1440px;
+
+.welcome {
+  text-align: center;
+}
+
+.page-user {
+  padding: 40px;
+  box-sizing: border-box;
 }
   .account {
     display: flex;
@@ -222,7 +242,7 @@ body {
     align-items: center;
     border: 1px solid black;
     background-color: #fff;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     flex-direction: column;
     padding: 1.5rem;

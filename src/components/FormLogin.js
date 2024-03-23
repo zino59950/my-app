@@ -21,8 +21,8 @@ const SignIn = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        localStorage.setItem("token", data.body.token);
+        console.log(data.body.token);
+        localStorage.token = data.body.token;
         navigate("/User");
       })
       .catch((err) => {
@@ -32,7 +32,7 @@ const SignIn = () => {
   };
 
   return (
-    <main className="main bg-dark">
+    <main className="main bg-dark form-login">
       <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
