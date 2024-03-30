@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux"; // Importez le crochet 'useDispatch' 
 
 const User = () => {
   const dispatch = useDispatch(); // Initialisez une fonction de dispatch à l'aide du crochet 'useDispatch'
-  const transactions = [ // Créez un tableau d'objets de transactions
+  const transactions = [
     {
       id: 1,
       amount: 100,
@@ -21,6 +21,7 @@ const User = () => {
       type: "deposit",
       category: "salary",
       note: "Salaire du mois de septembre",
+      date: new Date("2024-09-15"), // Exemple de date en septembre
     },
     {
       id: 2,
@@ -31,6 +32,7 @@ const User = () => {
       type: "withdrawal",
       category: "food",
       note: "Achat de nourriture",
+      date: new Date("2024-09-10"), // Exemple de date en septembre
     },
     {
       id: 3,
@@ -41,6 +43,7 @@ const User = () => {
       type: "deposit",
       category: "salary",
       note: "Salaire du mois de septembre",
+      date: new Date("2024-08-05"), // Exemple de date en août
     },
   ];
 
