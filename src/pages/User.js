@@ -18,6 +18,9 @@ const User = () => {
       accountNumber: 123456789,
       description: "Dépôt",
       title: "Compte chèque",
+      type: "deposit",
+      category: "salary",
+      note: "Salaire du mois de septembre",
     },
     {
       id: 2,
@@ -25,6 +28,9 @@ const User = () => {
       accountNumber: 123456789,
       description: "Retrait",
       title: "Compte chèque",
+      type: "withdrawal",
+      category: "food",
+      note: "Achat de nourriture",
     },
     {
       id: 3,
@@ -32,6 +38,9 @@ const User = () => {
       accountNumber: 123456789,
       description: "Dépôt",
       title: "Compte épargne",
+      type: "deposit",
+      category: "salary",
+      note: "Salaire du mois de septembre",
     },
   ];
 

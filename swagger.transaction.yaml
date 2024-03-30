@@ -33,14 +33,14 @@ paths:
           description: Comment payload.
           required: true
           schema:
-            $ref: "#/definitions/Transaction"
+            $ref: "#/definitions/TransactionDetail"
       produces:
         - application/json
       responses:
         "201":
           description: Comment edited successfully
           schema:
-            $ref: "#/definitions/Transaction"
+            $ref: "#/definitions/TransactionDetail"
         "400":
           description: Invalid Fields
         "401":
@@ -73,7 +73,7 @@ paths:
         "200":
           description: Get a specific transaction successfully
           schema:
-            $ref: "#/definitions/Transaction"
+            $ref: "#/definitions/TransactionDetail"
         "400":
           description: Invalid Fields
         "401":

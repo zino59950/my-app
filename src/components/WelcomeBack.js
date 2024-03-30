@@ -1,30 +1,29 @@
-import React, { useState } from "react"; // Importez React et useState depuis le module 'react'
-import "./main.css"; // Importez la feuille de style 'main.css'
-import { useSelector, useDispatch } from "react-redux"; // Importez le crochet 'useSelector' et 'useDispatch' depuis le module 'react-redux'
-import { setUser } from "../stores/user.js"; // Importez la fonction 'setUser' depuis le magasin 'user.js'
+import React, { useState } from "react";
+import "./main.css";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../stores/user.js";
 
 const WelcomeBack = () => {
-  const [isEdit, setIsEdit] = useState(false); // Initialisez l'état pour la modification du nom
-  const [userName, setUserName] = useState(""); // Initialisez l'état pour le nom d'utilisateur
-  const user = useSelector((state) => state.user.user); // Sélectionnez l'utilisateur à partir de l'état global
-  const dispatch = useDispatch(); // Initialisez une fonction de dispatch à l'aide du crochet 'useDispatch'
+  const [isEdit, setIsEdit] = useState(false);
+  const [userName, setUserName] = useState("");
+  const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
 
   const save = (e) => {
-    e.preventDefault(); // Empêchez le comportement par défaut du formulaire
-    setIsEdit(false); // Désactivez le mode d'édition
-    // Enregistrez le nouveau nom
+    e.preventDefault();
+    setIsEdit(false);
     fetch("http://localhost:3001/api/v1/user/profile", {
-      method: "PUT", // Utilisez la méthode PUT
+      method: "PUT",
       headers: {
-        "Content-Type": "application/json", // Définissez l'en-tête 'Content-Type' sur JSON
-        Authorization: `Bearer ${localStorage.getItem("token")}`, // Ajoutez le token d'autorisation
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-      body: JSON.stringify({ userName }), // Convertissez le nom d'utilisateur en chaîne JSON
+      body: JSON.stringify({ userName }),
     })
-      .then((res) => res.json()) // Analysez la réponse en tant que JSON
+      .then((res) => res.json())
       .then((data) => {
-        console.log(data); // Affichez les données reçues du serveur
-        dispatch(setUser(data.body)); // Envoyez l'action 'setUser' avec les données de l'utilisateur
+        console.log(data);
+        dispatch(setUser(data.body));
       });
   };
 
@@ -36,17 +35,32 @@ const WelcomeBack = () => {
           <br />
           {user?.userName} !
         </h1>
-        <button className="edit-button" onClick={() => setIsEdit(true)}>
-          Modifier le nom
+        <button className="edit-button" onClick={() => setIsEdit(!isEdit)}>
+          {isEdit ? "Annuler" : "Modifier le nom"}
         </button>
         {isEdit && (
+          <div>
+            <p>
+              Firstname: <input type="text" value={user?.firstName} disabled />
+            </p>
+            <p>
+              Lastname: <input type="text" value={user?.lastName} disabled />
+            </p>
+          </div>
+        )}
+        {isEdit && (
           <form className="edit-form" onSubmit={(e) => save(e)}>
+            Username:
             <input
               type="text"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
             />
-            <button type="submit">Enregistrer</button>
+            <div className="content-btn">
+              <button type="submit" className="edit-button">
+                Enregistrer
+              </button>
+            </div>
           </form>
         )}
       </div>
@@ -54,4 +68,4 @@ const WelcomeBack = () => {
   );
 };
 
-export default WelcomeBack; // Exportez le composant WelcomeBack
+export default WelcomeBack;
